@@ -1,5 +1,5 @@
 from sklearn.metrics import fbeta_score, precision_score, recall_score
-
+from sklearn.linear_model import LogisticRegression
 
 # Optional: implement hyperparameter tuning.
 def train_model(X_train, y_train):
@@ -17,8 +17,10 @@ def train_model(X_train, y_train):
     model
         Trained machine learning model.
     """
+    model = LogisticRegression(max_iter=100, random_state=64)
+    model.fit(X_train, y_train)
+    return model
 
-    pass
 
 
 def compute_model_metrics(y, preds):
