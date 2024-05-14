@@ -1,5 +1,4 @@
 on:
-  workflow_dispatch: # Run workflow manually
   pull_request:
     branches:
       - master
