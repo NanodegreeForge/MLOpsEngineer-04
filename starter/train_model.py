@@ -35,7 +35,7 @@ def main():
 
     if not os.path.exists("model/"):
         os.mkdir("model/")
-    pickle.dump(model, open("model/model.pkl", "wb"))
+    pickle.dump([model, encoder, lb], open("model/model.pkl", "wb"))
 
 if __name__ == "__main__":
     main()
