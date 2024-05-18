@@ -28,6 +28,9 @@ jobs:
           pip install flake8 pytest
           pip install -r requirements.txt
 
+      - name: Pulling DVC
+        run: dvc pull
+
       - name: Run Lint
         run: |
           # stop the build if there are Python syntax errors or undefined names
