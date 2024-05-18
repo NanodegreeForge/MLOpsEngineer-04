@@ -27,7 +27,7 @@ def main():
         train, categorical_features=cat_features, label="salary", training=True
     )
     # Proces the test data with the process_data function.
-    X_test, y_test, encoder, lb = process_data(
+    X_test, y_test, encoder_test, lb_test = process_data(
         test, categorical_features=cat_features, label="salary", training=True
     )
     # Train and save a model.
@@ -36,6 +36,5 @@ def main():
     if not os.path.exists("model/"):
         os.mkdir("model/")
     pickle.dump([model, encoder, lb], open("model/model.pkl", "wb"))
-
 if __name__ == "__main__":
     main()
