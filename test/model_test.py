@@ -18,11 +18,11 @@ cat_features = [
     "native-country",
 ]
 
-def test_inference(data):
+def test_inference():
     """
-    Assert that inference function returns correct
-    amount of predictions with respect to the input
+    Test inference function from model.py
     """
+    data = pd.read_csv("data/census_clean.csv")
 
     _, test_df = train_test_split(data, test_size=0.20)
     [model, encoder, lb] = pickle.load(open("model/lr_model.pkl", "rb"))
