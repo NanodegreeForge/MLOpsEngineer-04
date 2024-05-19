@@ -12,7 +12,7 @@ def test_root():
     response = client.get("/")
     assert response.text == '"Hello World"'
 
-def test_predict():
+def test_predict_low():
     """
     Test (/predict) api POST
     """
@@ -37,3 +37,29 @@ def test_predict():
 
     )
     assert res.text == '"[0]"'
+
+
+def test_predict_high():
+    """
+    Test (/predict) api POST
+    """
+    res = client.post("/predict", 
+        json = {
+            "age": 52,
+            "workclass": "Private",
+            "fnlgt": 209642,
+            "education": "Masters",
+            "education-num": 14,
+            "marital-status": "Married-civ-spouse",
+            "occupation": "Prof-specialty",
+            "relationship": "Husband",
+            "race": "White",
+            "sex": "Male",
+            "capital-gain": 14084,
+            "capital-loss": 0,
+            "hours-per-week": 45,
+            "native-country": "United-States"
+        }
+
+    )
+    assert res.text == '"[1]"'
