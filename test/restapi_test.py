@@ -11,13 +11,14 @@ def test_root():
     """
     response = client.get("/")
     assert response.text == '"Hello World"'
+    assert response.status_code == 200
 
 def test_predict_low():
     """
     Test (/predict) api POST
     """
 
-    res = client.post("/predict", 
+    response = client.post("/predict", 
         json = {
             "age": 28,
             "workclass": "Private",
@@ -36,14 +37,15 @@ def test_predict_low():
         }
 
     )
-    assert res.text == '"[0]"'
+    assert response.text == '"[0]"'
+    assert response.status_code == 200
 
 
 def test_predict_high():
     """
     Test (/predict) api POST
     """
-    res = client.post("/predict", 
+    response = client.post("/predict", 
         json = {
             "age": 52,
             "workclass": "Private",
@@ -62,4 +64,5 @@ def test_predict_high():
         }
 
     )
-    assert res.text == '"[1]"'
+    assert response.text == '"[1]"'
+    assert response.status_code == 200
