@@ -1,3 +1,4 @@
+import logging
 import pickle
 import pandas as pd
 import pandas.api.types as pdtypes
@@ -17,6 +18,8 @@ cat_features = [
     "sex",
     "native-country",
 ]
+
+logger = logging.getLogger(__name__)
 
 def test_train_model():
     """
@@ -52,6 +55,9 @@ def test_compute_model_metrics():
     predictions = inference(model, X_test)
     [model, encoder, lb] = pickle.load(open("model/model.pkl", "rb"))
     precision, recall, fbeta = compute_model_metrics(y_test, predictions)
+    logger.info("Percision:" + str(precision))
+    logger.info("Recall:" + str(recall))
+    logger.info("FBeta:" + str(fbeta))
     assert precision > 0.5
 
 def test_inference():
