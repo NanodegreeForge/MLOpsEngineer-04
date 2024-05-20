@@ -5,7 +5,7 @@ import pickle
 from sklearn.model_selection import train_test_split
 # Add the necessary imports for the starter code.
 from ml.data import process_data
-from ml.model import train_model
+from ml.model import compute_metrics_by_slices, train_model
 
 def main():
     # Add code to load in the data.
@@ -36,5 +36,8 @@ def main():
     if not os.path.exists("model/"):
         os.mkdir("model/")
     pickle.dump([model, encoder, lb], open("model/model.pkl", "wb"))
+
+    # Compute metrics with slices of data
+    compute_metrics_by_slices(test, cat_features, "salary")
 if __name__ == "__main__":
     main()
