@@ -30,6 +30,29 @@ class Input(BaseModel):
     hours_per_week: int = Field(alias='hours-per-week')
     native_country: str = Field(alias='native-country')
 
+    model_config = {
+        "json_schema_extra": {
+            "examples": [
+                {
+                    "age": 20,
+                    "workclass": "Private",
+                    "fnlgt": 199400,
+                    "education": "HS-grad",
+                    "education-num": 9,
+                    "marital-status": "Married-civ-spouse",
+                    "occupation": "Prof-specialty",
+                    "relationship": "Wife",
+                    "race": "White",
+                    "sex": "Female",
+                    "capital-gain": 1000,
+                    "capital-loss": 0,
+                    "hours-per-week": 40,
+                    "native-country": "United-States"
+                }
+            ]
+        }
+    }
+
 @app.post(path="/predict")
 async def predict(input: Input):
     [model, encoder, lb] = pickle.load(open("model/model.pkl", "rb"))
